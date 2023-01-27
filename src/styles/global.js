@@ -12,6 +12,14 @@ export default createGlobalStyle`
     background-color: ${({ theme }) => theme.COLORS.BACKGROUND_900};
     color: ${({ theme }) => theme.COLORS.WHITE};
     min-height: 100vh;
+
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body, input, button, textarea {
+    font-family: 'Roboto Slab', serif;
+    font-size: 16px;
+    outline: none;
   }
 
   a {
