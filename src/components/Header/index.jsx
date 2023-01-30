@@ -1,9 +1,19 @@
-import { Container } from './styles'
+import { Container, Profile, Logout } from './styles'
+import { RiShutDownLine } from 'react-icons/ri'
 
 export function Header() {
   return (
     <Container>
-      <span>Header</span>
+      <Profile>
+        <img src="https://github.com/dam450.png" alt="foto do usuário" />
+        <div>
+          <span>Bem-vindo</span>
+          <strong>Evandro Damaso</strong>
+        </div>
+      </Profile>
+      <Logout type="button" title="Sair" aria-label="Sair">
+        <RiShutDownLine />
+      </Logout>
     </Container>
   )
 }

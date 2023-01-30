@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import theme from '../../styles/theme'
 
 /**
  * Header style
@@ -17,6 +16,51 @@ export const Container = styled.header`
   align-items: center;
 
   padding: 0 80px;
+`
 
-  background: #0f01;
+export const Profile = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  > img {
+    height: 56px;
+    width: 56px;
+    border-radius: 50%;
+  }
+
+  > div {
+    display: flex;
+    flex-direction: column;
+
+    span {
+      font-style: normal;
+      font-size: 14px;
+      line-height: 18px;
+      color: ${({ theme }) => theme.COLORS.GRAY_100};
+    }
+
+    strong {
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 24px;
+      color: ${({ theme }) => theme.COLORS.WHITE};
+    }
+  }
+`
+
+export const Logout = styled.button`
+  background: none;
+  border: none;
+
+  > svg {
+    color: ${({ theme }) => theme.COLORS.GRAY_100};
+    font-size: 36px;
+  }
+
+  &:hover {
+    > svg {
+      color: ${({ theme }) => theme.COLORS.ORANGE};
+    }
+  }
 `
