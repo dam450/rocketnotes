@@ -52,6 +52,7 @@ export const Profile = styled.div`
 export const Logout = styled.button`
   background: none;
   border: none;
+  border-radius: 40%;
 
   > svg {
     color: ${({ theme }) => theme.COLORS.GRAY_100};
@@ -62,5 +63,9 @@ export const Logout = styled.button`
     > svg {
       color: ${({ theme }) => theme.COLORS.ORANGE};
     }
+  }
+  
+  &:focus {
+    outline: auto;
   }
 `

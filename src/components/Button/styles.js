@@ -14,4 +14,8 @@ export const Container = styled.button`
   &:disabled {
     opacity: 0.5;
   }
+  
+  &:focus {
+    outline: auto;
+  }
 `
