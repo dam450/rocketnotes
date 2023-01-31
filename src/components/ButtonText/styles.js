@@ -8,12 +8,21 @@ export const Container = styled.button`
   line-height: 21px;
   text-align: center;
 
-  color: ${({ theme }) => theme.COLORS.ORANGE };
-  
+  color: ${({ theme, isActive }) =>
+    isActive ? theme.COLORS.ORANGE : theme.COLORS.GRAY_100};
+
   background: none;
   border: none;
+  border-radius: 10%;
 
-  &:focus{
-    outline: auto;
+  &:focus {
+    color: ${({ theme }) => theme.COLORS.ORANGE};
+    outline: 2px solid ${({ theme }) => theme.COLORS.ORANGE};
+    outline-offset: 3px;
+  }
+
+  &:hover {
+    color: ${({ theme }) => theme.COLORS.ORANGE};
+    text-decoration: underline;
   }
 `
