@@ -52,7 +52,7 @@ export const Profile = styled.div`
 export const Logout = styled.button`
   background: none;
   border: none;
-  border-radius: 40%;
+  border-radius: 10%;
 
   > svg {
     color: ${({ theme }) => theme.COLORS.GRAY_100};
@@ -64,8 +64,13 @@ export const Logout = styled.button`
       color: ${({ theme }) => theme.COLORS.ORANGE};
     }
   }
-  
+
   &:focus {
-    outline: auto;
+    outline: 2px solid ${({ theme }) => theme.COLORS.ORANGE};
+    outline-offset: 4px;
+
+    > svg {
+      color: ${({ theme }) => theme.COLORS.ORANGE};
+    }
   }
 `
