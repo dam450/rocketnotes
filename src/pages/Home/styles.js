@@ -20,7 +20,20 @@ export const Container = styled.div`
 
 export const Brand = styled.div`
   grid-area: brand;
-  background-color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: ${({ theme }) => theme.COLORS.BACKGROUND_900};
+
+  border-bottom: 1px solid ${({ theme }) => theme.COLORS.BACKGROUND_700};
+
+  > h1 {
+    color: ${({ theme }) => theme.COLORS.ORANGE};
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+  }
 `
 
 export const Menu = styled.ul`
