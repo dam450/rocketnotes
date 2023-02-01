@@ -5,10 +5,13 @@
     "target": "ES2020",
     "jsx": "react",
     "strictNullChecks": true,
-    "strictFunctionTypes": true
+    "strictFunctionTypes": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
   },
-  "exclude": [
-    "node_modules",
-    "**/node_modules/*"
-  ]
+
+  "exclude": ["node_modules", "**/node_modules/*", "dist"],
+  "include": ["src/**/*"]
 }
