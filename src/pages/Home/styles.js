@@ -1,5 +1,4 @@
-import styled from "styled-components";
-import theme from "../../styles/theme";
+import styled from 'styled-components'
 
 export const Container = styled.div`
   width: 100%;
@@ -10,10 +9,10 @@ export const Container = styled.div`
   grid-template-columns: 250px auto;
   grid-template-rows: 105px 128px auto 64px;
   grid-template-areas:
-    "brand header"
-    "menu search"
-    "menu content"
-    "newnote content";
+    'brand header'
+    'menu search'
+    'menu content'
+    'newnote content';
 
   background-color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
 `
@@ -58,5 +57,22 @@ export const Content = styled.div`
 
 export const NewNote = styled.button`
   grid-area: newnote;
-  background-color: purple;
+  background-color: ${({ theme }) => theme.COLORS.ORANGE};
+  font-size: 20px;
+  line-height: 26px;
+  border: none;
+  color: ${({ theme }) => theme.COLORS.BACKGROUND_900};
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:focus-visible {
+    outline: ${({ theme }) => theme.COLORS.BACKGROUND_900} solid 2px;
+    outline-offset: -5px;
+  }
+
+  > svg {
+    margin-right: 8px;
+  }
 `

@@ -31,7 +31,10 @@ export function Home() {
 
       <Content></Content>
 
-      <NewNote>Criar nota</NewNote>
+      <NewNote type='button'>
+        <FiPlus size={22} />
+        Criar nota
+      </NewNote>
     </Container>
   )
 }
