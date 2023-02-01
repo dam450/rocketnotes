@@ -4,6 +4,8 @@ import { Container, Brand, Menu, Search, Content, NewNote } from './styles'
 import { Header } from '../../components/Header'
 import { ButtonText } from '../../components/ButtonText'
 import { Input } from '../../components/Input'
+import { Section } from '../../components/Section'
+import { Note } from '../../components/Note'
 
 export function Home() {
   return (
@@ -29,16 +31,26 @@ export function Home() {
         </li>
       </Menu>
 
+      <NewNote type="button">
+        <FiPlus size={22} />
+        Criar nota
+      </NewNote>
+
       <Search>
         <Input placeholder="Pesquisar pelo título" icon={FiSearch} />
       </Search>
 
-      <Content></Content>
-
-      <NewNote type='button'>
-        <FiPlus size={22} />
-        Criar nota
-      </NewNote>
+      <Content>
+        <Section title="Minhas notas">
+          <Note data={{
+            title: 'React Modal',
+            tags: [
+              {id:'1', name:'React'},
+              {id:'2', name:'node'},
+            ]
+          }} />
+        </Section>
+      </Content>
     </Container>
   )
 }
