@@ -65,7 +65,7 @@ export const Logout = styled.button`
     }
   }
 
-  &:focus {
+  &:focus-visible {
     outline: 2px solid ${({ theme }) => theme.COLORS.ORANGE};
     outline-offset: 4px;
 

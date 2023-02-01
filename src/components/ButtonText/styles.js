@@ -15,7 +15,7 @@ export const Container = styled.button`
   border: none;
   border-radius: 10%;
 
-  &:focus {
+  &:focus-visible {
     color: ${({ theme }) => theme.COLORS.ORANGE};
     outline: 2px solid ${({ theme }) => theme.COLORS.ORANGE};
     outline-offset: 3px;
