@@ -2,7 +2,8 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   display: flex;
-  place-items: center;
+  justify-content: space-between;
+  align-items: center;
 
   background-color: ${({ theme, isNew }) =>
     isNew ? 'transparent' : theme.COLORS.BACKGROUND_900};
@@ -35,8 +36,8 @@ export const Container = styled.div`
   > button {
     background: none;
     border: none;
-    height: 22px;
-    width: 22px;
+    height: 24px;
+    width: 24px;
     border-radius: 5px;
 
     &:focus-visible {

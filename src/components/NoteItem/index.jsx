@@ -13,7 +13,7 @@ export function NoteItem({ isNew, value, onClick, ...rest }) {
         title={isNew ? 'Adicionar' : 'Remover'}
         className={isNew ? 'button-add' : 'button-delete'}
       >
-        {isNew ? <FiPlus /> : <FiX />}
+        {isNew ? <FiPlus size={24} /> : <FiX size={24} />}
       </button>
     </Container>
   )
