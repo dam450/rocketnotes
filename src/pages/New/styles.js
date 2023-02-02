@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
 
   background-color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
 
@@ -13,6 +13,22 @@ export const Container = styled.div`
     'header'
     'content';
 
+  > main {
+    grid-area: content;
+    overflow-y: auto;
+  }
+
+  .tags {
+    display: inline-flex;
+    justify-content: start;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    div {
+      width: fit-content;
+      max-width: 200px;
+    }
+  }
 `
 
 export const Form = styled.form`
@@ -36,7 +52,5 @@ export const Form = styled.form`
     }
   }
 
-  > input {
-  }
 `
   

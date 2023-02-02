@@ -22,12 +22,21 @@ export function New() {
           <Input placeholder="Título" />
           <TextArea placeholder="Observações" />
 
-          <Section title="Links úteis"></Section>
+          <Section title="Links úteis">
+            <NoteItem placeholder="Novo link" value="Link" />
+            <NoteItem placeholder="Novo link" isNew />
+          </Section>
 
-          <NoteItem placeholder="Novo link" value="Link" />
-          <NoteItem placeholder="Novo link" isNew />
-
-          <Section title="Marcadores"></Section>
+          <Section title="Marcadores">
+            <div className='tags'>
+              <NoteItem placeholder="Novo link" value="React" />
+              <NoteItem placeholder="Novo link" value="React" />
+              <NoteItem placeholder="Novo link" value="React" />
+              
+              
+              <NoteItem placeholder="Novo marcador" isNew />
+            </div>
+          </Section>
 
           <Button title="Salvar" />
         </Form>
