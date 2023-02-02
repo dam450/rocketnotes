@@ -1,6 +1,7 @@
 import { Button } from '@/components/Button'
 import { Header } from '@/components/Header'
 import { Input } from '@/components/Input'
+import { NoteItem } from '@/components/NoteItem'
 import { Section } from '@/components/Section'
 import { TextArea } from '@/components/TextArea'
 
@@ -22,6 +23,10 @@ export function New() {
           <TextArea placeholder="Observações" />
 
           <Section title="Links úteis"></Section>
+
+          <NoteItem placeholder="Novo link" value="Link" />
+          <NoteItem placeholder="Novo link" isNew />
+
           <Section title="Marcadores"></Section>
 
           <Button title="Salvar" />
