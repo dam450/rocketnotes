@@ -4,7 +4,7 @@ import { RiShutDownLine } from 'react-icons/ri'
 export function Header() {
   return (
     <Container>
-      <Profile>
+      <Profile to="/profile" >
         <img src="https://github.com/dam450.png" alt="foto do usuário" />
         <div>
           <span>Bem-vindo</span>

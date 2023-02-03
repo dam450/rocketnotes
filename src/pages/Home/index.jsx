@@ -31,7 +31,7 @@ export function Home() {
         </li>
       </Menu>
 
-      <NewNote type="button">
+      <NewNote to="/new">
         <FiPlus size={22} />
         Criar nota
       </NewNote>
