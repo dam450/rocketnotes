@@ -20,9 +20,9 @@ export function New() {
   const [ tags, setTags ] = useState([])
   const [ newTag, setNewTag ] = useState('')
 
-  const [ title, setTitle ] = useState(''),
-    [ description, setDescription ] = useState(''),
-    navigate = useNavigate();
+  const [ title, setTitle ] = useState('')
+  const [ description, setDescription ] = useState('')
+  const navigate = useNavigate()
 
   function handleAddLink() {
     if (!newLink) return

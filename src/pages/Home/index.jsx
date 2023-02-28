@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { FiPlus, FiSearch } from 'react-icons/fi'
 import { Container, Brand, Menu, Search, Content, NewNote } from './styles'
+import { useNavigate } from 'react-router-dom'
 
 import { Header } from '../../components/Header'
 import { ButtonText } from '../../components/ButtonText'
@@ -30,6 +31,13 @@ export function Home() {
     }
   }
 
+  const navigate = useNavigate()
+
+  function handleDetails(id) {
+
+    navigate(`/details/${id}`)
+
+  }
 
   useEffect(() => {
     async function loadTags() {
@@ -93,7 +101,8 @@ export function Home() {
       <Content>
         <Section title="Minhas notas">
           {notes.map(note => (
-            <Note key={note.id} data={note} />
+            <Note key={note.id} data={note}
+              onClick={() => handleDetails(note.id)} />
           ))}
         </Section>
       </Content>
