@@ -41,10 +41,12 @@ export function New() {
   function handleAddTag() {
     if (!newTag) return
 
-    const tagFound = tags.find(tag => tag === newTag)
-    if (tagFound) return
+    const trimmedTag = newTag.trim()
 
-    setTags(prevState => [ ...prevState, newTag ])
+    const tagAlreadyIncluded = tags.includes(trimmedTag)
+    if (tagAlreadyIncluded) return
+
+    setTags(prevState => [...prevState, trimmedTag])
     setNewTag('')
   }
 
