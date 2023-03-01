@@ -33,13 +33,19 @@ export function Profile() {
 
 
   async function handleUserUpdate() {
-    const user = {
+    const userNewInfo = {
       name,
       email,
       password,
       new_password: newPassword
     }
-    await updateProfile({ user, avatarFile })
+
+    const userUpdated = Object.assign(user, userNewInfo)
+
+    await updateProfile({ user: userUpdated, avatarFile })
+
+    setPassword('')
+    setNewPassword('')
   }
 
   async function handleChangeAvatar(event) {
@@ -87,6 +93,7 @@ export function Profile() {
         />
 
         <Input
+          value={password}
           onChange={e => setPassword(e.target.value)}
           placeholder="Senha atual"
           type="password"
@@ -94,6 +101,7 @@ export function Profile() {
           autoComplete="current-password"
         />
         <Input
+          value={newPassword}
           onChange={e => setNewPassword(e.target.value)}
           placeholder="Nova senha"
           type="password"

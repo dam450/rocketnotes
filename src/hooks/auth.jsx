@@ -45,12 +45,12 @@ function AuthProvider({ children }) {
         user.avatar = response.data.avatar
 
       }
-      else {
-        user.avatar = data.user.avatar
-      }
-
 
       await api.put('/users', user)
+
+      delete user.password
+      delete user.new_password
+
       localStorage.setItem('@rocketnotes:user', JSON.stringify(user))
 
       setData({ user, token: data.token })
