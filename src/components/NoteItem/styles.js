@@ -21,7 +21,7 @@ export const Container = styled.div`
 
     color: ${({ theme }) => theme.COLORS.WHITE};
 
-    font-family: 'Roboto, sans-serif';
+    font-family: Roboto, sans-serif;
     font-style: normal;
     font-size: 16px;
 
