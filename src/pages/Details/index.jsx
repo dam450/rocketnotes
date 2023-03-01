@@ -26,18 +26,18 @@ export function Details() {
 
     if (confirm) {
       await api.delete(`/notes/${params.id}`)
-
-      navigate('/')
+      navigate(-1)
     }
-
-
   }
 
   useEffect(() => {
     async function fetchNote() {
-      const response = await api.get(`/notes/${params.id}`)
-      setData(response.data)
-      console.log(response.data)
+      try {
+        const response = await api.get(`/notes/${params.id}`)
+        setData(response.data)
+      } catch {
+        navigate("/")
+      }
     }
     fetchNote()
   }, [])
@@ -82,5 +82,3 @@ export function Details() {
     </Container>
   )
 }
-
-//export default () => (<>Rocketnotes</>)

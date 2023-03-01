@@ -22,7 +22,12 @@ export function New() {
 
   const [ title, setTitle ] = useState('')
   const [ description, setDescription ] = useState('')
+
   const navigate = useNavigate()
+
+  function handleBack() {
+    navigate(-1)
+  }
 
   function handleAddLink() {
     if (!newLink) return
@@ -87,7 +92,7 @@ export function New() {
     })
 
     alert('Nota criado com sucesso!')
-    navigate('/')
+    navigate(-1)
   }
 
   return (
@@ -98,7 +103,7 @@ export function New() {
         <Form>
           <header>
             <h1>Criar nota</h1>
-            <Link to="/">voltar</Link>
+            <button onClick={handleBack} type="button" >voltar</button>
           </header>
 
           <Input
@@ -151,10 +156,7 @@ export function New() {
             </div>
           </Section>
 
-          <Button
-            title="Salvar"
-            onClick={handleNewNote}
-          />
+          <Button title="Salvar" onClick={handleNewNote} />
         </Form>
       </main>
     </Container>

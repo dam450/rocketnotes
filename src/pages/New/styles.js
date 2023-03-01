@@ -36,7 +36,7 @@ export const Form = styled.form`
   margin: 38px auto;
 
   > header {
-    
+
     display: flex;
     justify-content: space-between;
     align-items: baseline;
@@ -46,11 +46,18 @@ export const Form = styled.form`
       font-size: 36px;
     }
 
-    a {
+    button {
+      background: none;
+      border: none;
+      padding: 0 .3rem;
+
       font-size: 20px;
       color: ${({ theme }) => theme.COLORS.GRAY_100};
+
+      &:focus-visible {
+        outline: auto;
+      }
     }
   }
 
 `
-  

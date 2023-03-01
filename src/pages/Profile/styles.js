@@ -20,6 +20,25 @@ export const Container = styled.div`
     svg {
       color: ${({ theme }) => theme.COLORS.GRAY_100};
     }
+
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      z-index: 99;
+
+      background: none;
+      border: none;
+      border-radius: 50%;
+
+      width: 28px;
+      aspect-ratio: 1 / 1;
+
+      &:focus-visible {
+        outline: auto;
+      }
+    }
   }
 `
 
