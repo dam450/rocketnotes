@@ -3,7 +3,7 @@ import backgroundImg from '../../assets/bg-sign.png'
 
 export const Container = styled.div`
   height: 100vh;
-  
+
   display: flex;
   align-items: stretch;
 
@@ -47,7 +47,7 @@ export const Form = styled.form`
 export const Background = styled.div`
   flex: 1;
   background: linear-gradient(90deg, #312e38, #312e3866),
-    url(${backgroundImg}) no-repeat center center;
+    url(${backgroundImg}) no-repeat left center;
   background-size: cover;
   /* opacity: 0.2;  */
 `
