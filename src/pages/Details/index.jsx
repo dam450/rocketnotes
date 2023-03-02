@@ -36,7 +36,7 @@ export function Details() {
         const response = await api.get(`/notes/${params.id}`)
         setData(response.data)
       } catch {
-        navigate("/")
+        navigate("/", { replace: true })
       }
     }
     fetchNote()
