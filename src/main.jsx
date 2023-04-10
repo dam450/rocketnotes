@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { ThemeProvider } from 'styled-components'
+import { Toaster } from 'react-hot-toast'
 
 import GlobalStyles from './styles/global'
 import theme from './styles/theme'
@@ -15,6 +16,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <AuthProvider>
         <Routes />
       </AuthProvider>
+      <Toaster />
     </ThemeProvider>
   </React.StrictMode>
 )

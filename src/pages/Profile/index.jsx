@@ -10,6 +10,7 @@ import { Avatar, Container, Form } from './styles'
 import { useAuth } from '@/hooks/auth'
 
 import { api } from '@/services/api'
+import { toast } from 'react-hot-toast'
 
 export function Profile() {
 
@@ -42,14 +43,18 @@ export function Profile() {
 
     const userUpdated = Object.assign(user, userNewInfo)
 
+    const toastLoading = toast.loading('Atualizando perfil...')
     await updateProfile({ user: userUpdated, avatarFile })
+      .then(() => {
+        toast.dismiss(toastLoading)
+      })
 
     setPassword('')
     setNewPassword('')
   }
 
   async function handleChangeAvatar(event) {
-    const file = event.target.files[0]
+    const [ file ] = event.target.files
     setAvatarFile(file)
 
     const imagePreview = URL.createObjectURL(file)

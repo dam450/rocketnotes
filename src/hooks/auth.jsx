@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect } from 'react'
+import { toast } from 'react-hot-toast'
 
 import { api } from '@/services/api'
 
@@ -21,9 +22,11 @@ function AuthProvider({ children }) {
 
     } catch (error) {
       if (error.response)
-        alert(error.response.data.message)
+        //alert(error.response.data.message)
+        toast.error(error.response.data.message)
       else
-        alert('Não foi possível autenticar')
+        //alert('Não foi possível autenticar')
+        toast.error('Não foi possível autenticar')
     }
   }
 
@@ -54,10 +57,10 @@ function AuthProvider({ children }) {
       localStorage.setItem('@rocketnotes:user', JSON.stringify(user))
 
       setData({ user, token: data.token })
-      alert('Perfil atualizado com sucesso')
+      toast.success('Perfil atualizado com sucesso')
     } catch (error) {
-      if (error.response) alert(error.response.data.message)
-      else alert('Não foi possível atualizar o perfil')
+      if (error.response) toast.error(error.response.data.message)
+      else toast.error('Não foi possível atualizar o perfil!')
     }
   }
 

@@ -11,6 +11,7 @@ import { TextArea } from '@/components/TextArea'
 import { api } from '@/services/api'
 
 import { Container, Form } from './styles'
+import { toast } from 'react-hot-toast'
 
 export function New() {
 
@@ -62,25 +63,40 @@ export function New() {
   async function handleNewNote() {
 
     if (!title)
-      return alert('Informe o título da nota')
+      return toast('Informe ao menos o título da nota!')
+
+    const alertConfig = {
+      style: { background: '#ffc400', color: '#292929' },
+      duration: 6000,
+    }
 
     if (newLink) {
-      const ok = confirm(
-        'Links\n'+
-        '\nVocê digitou um Link mas não adicionou.' +
-        '\nClique no botão + para adicionar ou deixe o campo vazio.' +
-        '\nDeseja continuar assim mesmo?'
+      // const ok = confirm(
+      //   'Links\n'+
+      //   '\nVocê digitou um Link mas não adicionou.' +
+      //   '\nClique no botão + para adicionar ou deixe o campo vazio.' +
+      //   '\nDeseja continuar assim mesmo?'
+      // )
+      // if(!ok) return
+      return toast(
+        'Você digitou um Link mas não adicionou.' +
+          '\n\nClique em + para adicionar ou deixe o campo vazio.',
+        alertConfig
       )
-      if(!ok) return
     }
 
     if (newTag) {
-      const ok = confirm(
-        'Marcadores\n' +
-        '\nVocê digitou uma Tag mas não adicionou!' +
-        '\nDeseja continuar mesmo assim?'
+      // const ok = confirm(
+      //   'Marcadores\n' +
+      //   '\nVocê digitou uma Tag mas não adicionou!' +
+      //   '\nDeseja continuar mesmo assim?'
+      // )
+      // if(!ok) return
+      return toast(
+        'Você digitou uma Tag mas não adicionou!' +
+          '\n\nClique em + para adicionar ou deixe o campo vazio.',
+        alertConfig
       )
-      if(!ok) return
     }
 
 
@@ -91,7 +107,7 @@ export function New() {
       links,
     })
 
-    alert('Nota criado com sucesso!')
+    toast.success('Nota criado com sucesso!')
     navigate(-1)
   }
 

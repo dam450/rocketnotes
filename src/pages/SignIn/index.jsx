@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { FiMail, FiLock } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
+import toast from 'react-hot-toast'
 
 import { useAuth } from '@/hooks/auth'
 
@@ -16,12 +17,20 @@ export function SignIn() {
 
   const { signIn } = useAuth()
 
-  function handleSignIn() {
+  function handleSignIn(e) {
+    e.preventDefault()
 
-    if (!email || !password)
-      return alert('Por favor, preencha e-mail e senha')
+    if (!email || !password) {
+      console.count('toast')
+      return toast.error('Por favor, preencha e-mail e senha!')
+    }
 
-    signIn({ email, password })
+    const toastLoading = toast.loading('Aguarde...')
+
+    const signRes = signIn({ email, password })
+      .then(() => toast.dismiss(toastLoading))
+
+
   }
 
   return (
@@ -37,11 +46,12 @@ export function SignIn() {
         <Input placeholder="Senha" type="password" icon={FiLock}
           onChange={e => setPassword(e.target.value)} />
 
-        <Button title="Entrar" onClick={ handleSignIn } />
+        <Button title="Entrar" type="submit" onClick={ handleSignIn } />
 
         <Link to="/register">Criar conta</Link>
       </Form>
       <Background />
+
     </Container>
   )
 }
