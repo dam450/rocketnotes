@@ -2,6 +2,7 @@ import { createContext, useContext, useState, useEffect } from 'react'
 import { toast } from 'react-hot-toast'
 
 import { api } from '@/services/api'
+import { Jwt } from '@/utils/Jwt'
 
 export const AuthContext = createContext({})
 
@@ -69,6 +70,11 @@ function AuthProvider({ children }) {
     const user = JSON.parse(localStorage.getItem('@rocketnotes:user'))
 
     if (token && user) {
+      const jwtToken = new Jwt(token)
+      if (jwtToken.isExpired()) {
+        signOut()
+      }
+
       api.defaults.headers.common['Authorization'] = `Bearer ${token}`
       setData({ token, user })
     }
