@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
 import { Button } from '@/components/Button'
@@ -23,6 +23,10 @@ export function New() {
 
   const [ title, setTitle ] = useState('')
   const [ description, setDescription ] = useState('')
+
+  const inputLink = useRef()
+  const inputTag = useRef()
+  const saveBtn = useRef()
 
   const navigate = useNavigate()
 
@@ -67,17 +71,12 @@ export function New() {
 
     const alertConfig = {
       style: { background: '#ffc400', color: '#292929' },
-      duration: 6000,
+      duration: 4000,
     }
 
     if (newLink) {
-      // const ok = confirm(
-      //   'Links\n'+
-      //   '\nVocê digitou um Link mas não adicionou.' +
-      //   '\nClique no botão + para adicionar ou deixe o campo vazio.' +
-      //   '\nDeseja continuar assim mesmo?'
-      // )
-      // if(!ok) return
+      inputLink.current.focus()
+
       return toast(
         'Você digitou um Link mas não adicionou.' +
           '\n\nClique em + para adicionar ou deixe o campo vazio.',
@@ -86,12 +85,8 @@ export function New() {
     }
 
     if (newTag) {
-      // const ok = confirm(
-      //   'Marcadores\n' +
-      //   '\nVocê digitou uma Tag mas não adicionou!' +
-      //   '\nDeseja continuar mesmo assim?'
-      // )
-      // if(!ok) return
+      inputTag.current.focus()
+
       return toast(
         'Você digitou uma Tag mas não adicionou!' +
           '\n\nClique em + para adicionar ou deixe o campo vazio.',
@@ -99,6 +94,7 @@ export function New() {
       )
     }
 
+    saveBtn.current.disabled = true
 
     await api.post('/notes', {
       title,
@@ -107,6 +103,7 @@ export function New() {
       links,
     })
 
+    saveBtn.current.disabled = false
     toast.success('Nota criado com sucesso!')
     navigate(-1)
   }
@@ -119,7 +116,9 @@ export function New() {
         <Form>
           <header>
             <h1>Criar nota</h1>
-            <button onClick={handleBack} type="button" >voltar</button>
+            <button onClick={handleBack} type="button">
+              voltar
+            </button>
           </header>
 
           <Input
@@ -149,6 +148,7 @@ export function New() {
               onClick={handleAddLink}
               value={newLink}
               pattern="https://.*"
+              ref={inputLink}
             />
           </Section>
 
@@ -168,11 +168,12 @@ export function New() {
                 onChange={e => setNewTag(e.target.value)}
                 value={newTag}
                 onClick={handleAddTag}
+                ref={inputTag}
               />
             </div>
           </Section>
 
-          <Button title="Salvar" onClick={handleNewNote} />
+          <Button title="Salvar" onClick={handleNewNote} ref={saveBtn} />
         </Form>
       </main>
     </Container>
