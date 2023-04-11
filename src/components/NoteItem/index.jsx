@@ -1,11 +1,12 @@
 import { FiX, FiPlus } from 'react-icons/fi'
 
 import { Container } from './styles'
+import { forwardRef } from 'react'
 
-export function NoteItem({ isNew, value, onClick, ...rest }) {
+export const NoteItem = forwardRef(({ isNew, value, onClick, ...rest }, ref) => {
   return (
     <Container isNew={isNew}>
-      <input value={value} {...rest} readOnly={!isNew} />
+      <input value={value} {...rest} readOnly={!isNew} ref={ref} />
 
       <button
         onClick={onClick}
@@ -17,4 +18,4 @@ export function NoteItem({ isNew, value, onClick, ...rest }) {
       </button>
     </Container>
   )
-}
+})

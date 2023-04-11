@@ -1,8 +1,9 @@
 import axios from 'axios'
 
-const port =  '3333'
-const host =  '127.0.0.1'
+const port =  ''
+const proto = 'https'
+const host =  'rocketnotes-api-npvt.onrender.com'
 
 export const api = axios.create({
-  baseURL: `http://${host}:${port}`,
+  baseURL: `${proto}://${host}`,
 })

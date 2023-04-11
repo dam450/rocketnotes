@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { FiMail, FiLock } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
 import toast from 'react-hot-toast'
@@ -13,7 +13,9 @@ import { Container, Form, Background } from './styles'
 export function SignIn() {
 
   const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [ password, setPassword ] = useState('')
+
+  const submitBtn = useRef()
 
   const { signIn } = useAuth()
 
@@ -26,9 +28,13 @@ export function SignIn() {
     }
 
     const toastLoading = toast.loading('Aguarde...')
+    submitBtn.current.disabled = true
 
-    const signRes = signIn({ email, password })
-      .then(() => toast.dismiss(toastLoading))
+    signIn({ email, password })
+      .then(() => {
+        toast.dismiss(toastLoading)
+        submitBtn.current.disabled = false
+      })
 
 
   }
@@ -40,18 +46,29 @@ export function SignIn() {
         <p>Aplicação para salvar e gerenciar seus links úteis.</p>
         <h2>Faça seu login</h2>
 
-        <Input placeholder="E-mail" icon={FiMail}
-          onChange={e => setEmail(e.target.value)} />
+        <Input
+          placeholder="E-mail"
+          icon={FiMail}
+          onChange={e => setEmail(e.target.value)}
+        />
 
-        <Input placeholder="Senha" type="password" icon={FiLock}
-          onChange={e => setPassword(e.target.value)} />
+        <Input
+          placeholder="Senha"
+          type="password"
+          icon={FiLock}
+          onChange={e => setPassword(e.target.value)}
+        />
 
-        <Button title="Entrar" type="submit" onClick={ handleSignIn } />
+        <Button
+          title="Entrar"
+          type="submit"
+          onClick={handleSignIn}
+          ref={submitBtn}
+        />
 
         <Link to="/register">Criar conta</Link>
       </Form>
       <Background />
-
     </Container>
   )
 }
