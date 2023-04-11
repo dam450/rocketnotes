@@ -95,17 +95,28 @@ export function New() {
     }
 
     saveBtn.current.disabled = true
+    const loadingToast = toast.loading('Salvando Nota...')
 
-    await api.post('/notes', {
-      title,
-      description,
-      tags,
-      links,
-    })
 
-    saveBtn.current.disabled = false
-    toast.success('Nota criado com sucesso!')
-    navigate(-1)
+    api
+      .post('/notes', {
+        title,
+        description,
+        tags,
+        links,
+      })
+      .then(() => {
+        toast.dismiss(loadingToast)
+        toast.success('Nota criado com sucesso!')
+        navigate(-1)
+      })
+      .catch(() => {
+        toast.dismiss(loadingToast)
+        toast.error('Ocorreu um erro ao criar a nota!')
+      })
+      .finally(() => {
+        saveBtn.current.disabled = false
+      })
   }
 
   return (
