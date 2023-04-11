@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { FiMail, FiLock, FiUser } from 'react-icons/fi'
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-hot-toast'
@@ -16,14 +16,19 @@ export function SignUp() {
   const [ email, setEmail ] = useState('')
   const [ password, setPassword ] = useState('')
 
+  const submitBtn = useRef()
+
   const navigate = useNavigate()
 
-  function handleSignUp( e ) {
+  function handleSignUp(e) {
+    e.preventDefault()
     console.log(name, email, password)
 
     if (!name || !email || !password) {
       return toast('Por favor, preencha todos os campos!')
     }
+
+    submitBtn.current.disabled = true
 
     api.post('/users', { name, email, password })
       .then(() => {
@@ -36,6 +41,8 @@ export function SignUp() {
         } else {
           toast.error('Não foi possível cadastrar o usuário')
         }
+      }).finally(() => {
+        submitBtn.current.disabled = false
       })
   }
 
@@ -68,7 +75,7 @@ export function SignUp() {
           onChange={e => setPassword(e.target.value)}
         />
 
-        <Button title="Cadastrar" onClick={handleSignUp} />
+        <Button title="Cadastrar" type="submit" onClick={handleSignUp} ref={submitBtn} />
 
         <Link to="/">Voltar para o login</Link>
       </Form>
