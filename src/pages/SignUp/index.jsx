@@ -29,6 +29,7 @@ export function SignUp() {
     }
 
     submitBtn.current.disabled = true
+    const loadingToast = toast.loading('Aguarde...')
 
     api.post('/users', { name, email, password })
       .then(() => {
@@ -42,6 +43,7 @@ export function SignUp() {
           toast.error('Não foi possível cadastrar o usuário')
         }
       }).finally(() => {
+        toast.dismiss(loadingToast)
         submitBtn.current.disabled = false
       })
   }
