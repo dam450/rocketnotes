@@ -1,13 +1,10 @@
+import { forwardRef } from 'react'
 import { Container } from './styles'
 
-export function Button({ title, ...rest }) {
-
+export const Button = forwardRef(({ title, ...rest }, ref) => {
   return (
-    <Container
-      type="button"
-      {...rest}
-    >
+    <Container type="button" {...rest} ref={ref}>
       {title}
     </Container>
   )
-}
+})
