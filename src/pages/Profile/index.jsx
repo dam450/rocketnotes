@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { FiArrowLeft, FiUser, FiMail, FiLock, FiCamera } from 'react-icons/fi'
 import avatarPlaceholder from '@/assets/avatar_placeholder.svg'
@@ -21,6 +21,8 @@ export function Profile() {
   const [ password, setPassword ] = useState('')
   const [ newPassword, setNewPassword ] = useState('')
 
+  const saveBtn = useRef()
+
   const avatarURL = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder
 
   const [avatar, setAvatar] = useState(avatarURL)
@@ -41,12 +43,18 @@ export function Profile() {
       new_password: newPassword
     }
 
+    console.log('button:', saveBtn.current)
+
+    saveBtn.current.disabled = true
+
     const userUpdated = Object.assign(user, userNewInfo)
 
     const toastLoading = toast.loading('Atualizando perfil...')
     await updateProfile({ user: userUpdated, avatarFile })
       .then(() => {
         toast.dismiss(toastLoading)
+      }).then(() => {
+        saveBtn.current.disabled = false
       })
 
     setPassword('')
@@ -114,7 +122,7 @@ export function Profile() {
           autoComplete="new-password"
         />
 
-        <Button title="Salvar" onClick={handleUserUpdate} />
+        <Button title="Salvar" onClick={handleUserUpdate} ref={saveBtn} />
       </Form>
     </Container>
   )
